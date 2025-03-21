@@ -1,4 +1,4 @@
-# Hướng dẫn sử dụng dự án Blazor
+# Hướng dẫn sử dụng dự án trong VSCode
 
 ## 1. Tạo và chạy dự án Blazor:
 ```sh
