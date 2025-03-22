@@ -55,10 +55,12 @@ dotnet add package Microsoft.EntityFrameworkCore.Relational --version 8.0.13
 
 Program.cs
 -----
+
 using Demo_ASPNet.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Đăng ký DbContext kết nối MySQL
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -67,11 +69,31 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySqlConnection"))
     ));
 
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
+
+
+// Route cho ProductController
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Product}/{action=Index}/{id?}");
+
+// Route mặc định cho các controller khác
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
 
