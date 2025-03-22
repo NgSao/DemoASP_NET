@@ -1,20 +1,5 @@
 # Hướng dẫn sử dụng dự án trong VSCode
 
-## 1. Tạo và chạy dự án Blazor:
-```sh
-dotnet new blazorserver -o DemoASP_NET
-cd DemoASP_NET
-dotnet run
-```
-- `dotnet new blazorserver`: Tạo dự án Blazor Server.
-- `-o DemoASP_NET`: Đặt tên thư mục là DemoASP_NET.
-- `dotnet run`: Chạy ứng dụng.
-
-## 2. Xem trực tiếp thay đổi khi code:
-```sh
-dotnet watch run
-```
-Lệnh này sẽ tự động reload khi bạn chỉnh sửa mã nguồn.
 
 ## 3. Liệt kê các mẫu dự án có sẵn:
 ```sh
@@ -28,6 +13,8 @@ cd MyMvcApp
 dotnet run
 ```
 
+
+# Hướng dẫn sử dụng dự án trong VSCode
 ## 5. Hướng dẫn sử dụng trong VS Code:
 ### Cài đặt môi trường:
 - **Cài đặt .NET SDK**: Tải từ [dotnet.microsoft.com](https://dotnet.microsoft.com).
