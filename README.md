@@ -46,3 +46,40 @@ code .
 2. Chọn **.NET Core Launch (web)** nếu là Blazor hoặc MVC.
 3. Nhấn **Start Debugging (F5)**.
 
+
+
+------
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.13
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.13
+dotnet add package Microsoft.EntityFrameworkCore.Relational --version 8.0.13
+
+Program.cs
+-----
+using Demo_ASPNet.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Đăng ký DbContext kết nối MySQL
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("MySqlConnection"),
+        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("MySqlConnection"))
+    ));
+
+builder.Services.AddControllers();
+var app = builder.Build();
+
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();
+
+
+
+-----
+appsting.json
+  "ConnectionStrings": {
+    "MySqlConnection": "server=localhost;database=MyAspNetDb;user=root;password=root"
+  },
+
