@@ -92,3 +92,20 @@ appsting.json
     "MySqlConnection": "server=localhost;database=MyAspNetDb;user=root;password=root"
   },
 
+
+  -----
+  CSDL
+  CREATE DATABASE MyAspNetDb;
+use MyAspNetDb;
+CREATE TABLE product (
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    name VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    avatar VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    price DECIMAL(10,2) NOT NULL
+);
+
+INSERT INTO product (name, avatar, price) VALUES
+('Product 1', 'avatar1.jpg', 19.99),
+('Product 2', 'avatar2.jpg', 29.99),
+('Product 3', 'avatar3.jpg', 39.99);
+
